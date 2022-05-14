@@ -4,10 +4,10 @@ import sys
 import numpy as np
 import pygame
 
-BLUE = (42, 9, 232)
+BLUE = (186, 140, 99)
 BLACK = (0,0,0)
-RED = (255,0,0)
-YELLOW = (255,255,0)
+RED = (184, 37, 37)
+YELLOW = (197, 212, 34)
 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
@@ -54,7 +54,7 @@ def winning_move(board, piece):
 		for r in range(3, ROW_COUNT):
 			if board[r][c] == piece and board[r-1][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece:
 				return True
-                
+
 def draw_board(board):
 	for c in range(COLUMN_COUNT):
 		for r in range(ROW_COUNT):
@@ -76,6 +76,7 @@ game_over = False
 turn = 0
 
 pygame.init()
+pygame.display.set_caption('Connect-4 AI by FormulaAI')
 
 SQUARESIZE = 100
 
@@ -90,7 +91,7 @@ screen = pygame.display.set_mode(size)
 draw_board(board)
 pygame.display.update()
 
-myfont = pygame.font.SysFont("monospace", 75)
+myfont = pygame.font.SysFont("georgia", 75)
 
 while not game_over:
 
@@ -120,7 +121,7 @@ while not game_over:
 					drop_piece(board, row, col, 1)
 
 					if winning_move(board, 1):
-						label = myfont.render("Player 1 wins!!", 1, RED)
+						label = myfont.render("player1 wins", 1, RED)
 						screen.blit(label, (40,10))
 						game_over = True
 
@@ -135,7 +136,7 @@ while not game_over:
 					drop_piece(board, row, col, 2)
 
 					if winning_move(board, 2):
-						label = myfont.render("Player 2 wins!!", 1, YELLOW)
+						label = myfont.render("player2 wins", 1, YELLOW)
 						screen.blit(label, (40,10))
 						game_over = True
 
