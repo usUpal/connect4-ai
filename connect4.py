@@ -29,6 +29,7 @@ def get_next_open_row(board, col):
             return r
 def print_board(board):
     print(np.flip(board,0))
+
 def winning_move(board, piece):
 	# Check horizontal locations for win
 	for c in range(COLUMN_COUNT-3):
@@ -53,6 +54,7 @@ def winning_move(board, piece):
 		for r in range(3, ROW_COUNT):
 			if board[r][c] == piece and board[r-1][c+1] == piece and board[r-2][c+2] == piece and board[r-3][c+3] == piece:
 				return True
+                
 def draw_board(board):
 	for c in range(COLUMN_COUNT):
 		for r in range(ROW_COUNT):
