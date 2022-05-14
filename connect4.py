@@ -1,7 +1,13 @@
+import math
 import sys
 
 import numpy as np
-# import pygame
+import pygame
+
+BLUE = (42, 9, 232)
+BLACK = (0,0,0)
+RED = (255,0,0)
+YELLOW = (255,255,0)
 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
