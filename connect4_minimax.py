@@ -1,13 +1,14 @@
-import numpy as np
-import random
-import pygame
-import sys
 import math
+import random
+import sys
 
-BLUE = (0,0,255)
+import numpy as np
+import pygame
+
+BLUE = (186, 140, 99)
 BLACK = (0,0,0)
-RED = (255,0,0)
-YELLOW = (255,255,0)
+RED = (184, 37, 37)
+YELLOW = (197, 212, 34)
 
 ROW_COUNT = 6
 COLUMN_COUNT = 7
@@ -252,7 +253,7 @@ while not game_over:
 					drop_piece(board, row, col, PLAYER_PIECE)
 
 					if winning_move(board, PLAYER_PIECE):
-						label = myfont.render("Player 1 wins!!", 1, RED)
+						label = myfont.render("Human wins", 1, RED)
 						screen.blit(label, (40,10))
 						game_over = True
 
@@ -276,7 +277,7 @@ while not game_over:
 			drop_piece(board, row, col, AI_PIECE)
 
 			if winning_move(board, AI_PIECE):
-				label = myfont.render("Player 2 wins!!", 1, YELLOW)
+				label = myfont.render("AI wins", 1, YELLOW)
 				screen.blit(label, (40,10))
 				game_over = True
 
