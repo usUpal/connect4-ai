@@ -122,6 +122,45 @@ def is_terminal_node(board):
 	return winning_move(board, PLAYER_PIECE) or winning_move(board, AI_PIECE) or len(get_valid_locations(board)) == 0
 
 def minimax(board, depth, alpha, beta, maximizingPlayer):
+	#! minimax algorithm
+	''' function  minimax(node, depth, maximizingPlayer) is
+    if depth = 0 or node is a terminal node then
+        return the heuristic value of node
+    if maximizingPlayer then
+        value := −∞
+        for each child of node do
+            value := max(value, minimax(child, depth − 1, FALSE))
+        return value
+    else (* minimizing player *)
+        value := +∞
+        for each child of node do
+            value := min(value, minimax(child, depth − 1, TRUE))
+        return value'''
+	#! Alpha-beta pruning
+	'''
+	function alphabeta(node, depth, α, β, maximizingPlayer) is
+    if depth = 0 or node is a terminal node then
+        return the heuristic value of node
+    if maximizingPlayer then
+        value := −∞
+        for each child of node do
+            value := max(value, alphabeta(child, depth − 1, α, β, FALSE))
+            if value ≥ β then
+                break (* β cutoff *)
+            α := max(α, value)
+        return value
+    else
+        value := +∞
+        for each child of node do
+            value := min(value, alphabeta(child, depth − 1, α, β, TRUE))
+            if value ≤ α then
+                break (* α cutoff *)
+            β := min(β, value)
+        return value 
+	'''
+	#!(* Initial call *)
+    #alphabeta(origin, depth, −∞, +∞, TRUE)
+	
 	valid_locations = get_valid_locations(board)
 	is_terminal = is_terminal_node(board)
 	if depth == 0 or is_terminal:
@@ -269,7 +308,7 @@ while not game_over:
 
 		#col = random.randint(0, COLUMN_COUNT-1)
 		#col = pick_best_move(board, AI_PIECE)
-		col, minimax_score = minimax(board, 5, -math.inf, math.inf, True)
+		col, minimax_score = minimax(board, 5, -math.inf, math.inf, True) #! minimax score implemented
 
 		if is_valid_location(board, col):
 			#pygame.time.wait(500)
